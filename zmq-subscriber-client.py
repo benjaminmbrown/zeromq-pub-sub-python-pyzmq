@@ -27,10 +27,11 @@ socket.setsockopt(zmq.SUBSCRIBE, topicfilter)
 
 #show some updates
 total_val = 0
-for update_nbr in range(1s5):
+for update_nbr in range(25):
 	string = socket.recv()
+	print 'socket string', string
 	topic,messagedata = string.split()
 	total_val += int(messagedata)
-	print topic, messagedata
+	print "Zip: ",topic, "Temp: ", messagedata
 
-print "Average temp for zip '%s' was %dF" % (topicfilter, toval_val/update_nbr)
+print "Average temp for zip '%s' was %dF" % (topicfilter, total_val/update_nbr)
